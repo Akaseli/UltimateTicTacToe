@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./App.css"
 import { Board } from './components/Board'
 import { useTranslation } from 'react-i18next'
-import en from '/flags/en.svg'
 
 interface Props {
 
@@ -11,6 +10,11 @@ interface Props {
 
 export const App: React.FC<Props> = () => {
   const {t, i18n} = useTranslation(); 
+
+  useEffect(() => {
+    //Change Title to be translated
+    document.title = t('app');
+  }, [t])
   
   return(
     <div>

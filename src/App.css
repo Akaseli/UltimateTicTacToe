@@ -3,17 +3,16 @@ body {
   text-align: center;
 }
 
-
 .appbar{
   display: block;
   width: 100%;
-  padding: 10px;
   margin-left: 0px;
   background-color: rgb(30, 30, 30);
   box-shadow: 0px 5px 5px rgb(34, 34, 34);
 }
 
 .langMenu{
+  padding: 10px;
   display: flex;
   align-items: center;
 }
@@ -21,7 +20,18 @@ body {
 .langSelector{
   padding: 5px;
   margin-left: 5px;
+  
+  min-width: 10ch;
+  max-width: 20ch;
+
+  border: 1px solid #353535;
+  border-radius: 0.25em;
+
+  cursor: pointer;
+  background-color: #171717;
+  display: grid;
 }
+
 
 .langFlag{
   height: 30px;
