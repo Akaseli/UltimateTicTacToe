@@ -1,3 +1,5 @@
 {
-  "app" : "Älykäsristinolla"
+  "app" : "Älykäsristinolla",
+  "online" : "Verkkomoninpeli",
+  "local" : "Paikallinen"
 }

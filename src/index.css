@@ -26,3 +26,8 @@ select {
   line-height: inherit;
   outline: none;
 }
+
+button{
+  background-color: transparent;
+  padding: 10px;
+}

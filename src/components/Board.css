@@ -1,3 +1,26 @@
 .board {
-
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+table{
+  margin: 5px;
+  border-collapse: collapse;
+}
+
+td {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgb(102, 102, 102);
+}
+
+.r3 td, .r6 td{
+  border-bottom: 3px solid rgb(102, 102, 102);
+}
+
+.c4, .c7{
+  border-left: 3px solid rgb(102, 102, 102);
+}
+

@@ -40,3 +40,21 @@ body {
 .langFlagMini{
   height: 20px;
 }
+
+button{
+  border-radius: 0.25rem;
+  margin: 5px;
+  margin-top: 0px;
+}
+
+.online{
+  background-color: rgb(36, 36, 36);
+}
+
+.local{
+  background-color: rgb(36, 36, 36);
+}
+
+.local:hover{
+  background-color: rgb(50, 50, 50);
+}

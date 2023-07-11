@@ -1,3 +1,5 @@
 {
-  "app" : "Ultimate TicTacToe"
+  "app" : "Ultimate TicTacToe",
+  "online" : "Online",
+  "local" : "Local"
 }
