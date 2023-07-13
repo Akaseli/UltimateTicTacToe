@@ -26,14 +26,16 @@ td.o::after{
   content: 'O';
   display: block;
   position: relative;
-  font-size: x-large;
+  font-size: xx-large;
+  font-family: monospace;
 }
 
 td.x::after{
   content: 'X';
   display: block;
   position: relative;
-  font-size: x-large;
+  font-size: xx-large;
+  font-family: monospace;
 }
 
 .r3 td, .r6 td{
@@ -42,5 +44,37 @@ td.x::after{
 
 .c4, .c7{
   border-left: 3px solid rgb(102, 102, 102);
+}
+
+.information{
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 70vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.player{
+  text-align: start;
+  padding: 10px;
+}
+
+.turn{
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.username{
+  margin: 5px;
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+
+.time{
+  margin: 5px;
+  margin-top: 0px;
+  font-weight: lighter;
+  color: grey;
 }
 

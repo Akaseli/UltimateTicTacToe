@@ -1,5 +1,6 @@
 {
   "app" : "Älykäsristinolla",
   "online" : "Verkkomoninpeli",
-  "local" : "Paikallinen"
+  "local" : "Paikallinen",
+  "timeremaining" : "Aikaa jäljellä"
 }

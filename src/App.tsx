@@ -38,6 +38,7 @@ export const App: React.FC<Props> = () => {
       </h1>
       <button className='online' disabled>{t('online')}</button>
       <button className='local'>{t('local')}</button>
+      
       <Board />
     </div>
   );
