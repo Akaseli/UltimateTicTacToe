@@ -15,27 +15,15 @@ td {
   width: 40px;
   height: 40px;
   border: 1px solid rgb(102, 102, 102);
-  cursor: pointer;
 }
 
-td.x, td.o {
-  cursor: default; 
-}
-
-td.o::after{
-  content: 'O';
-  display: block;
+td p {
+  margin: 0;
+  cursor: default;
   position: relative;
   font-size: xx-large;
-  font-family: monospace;
-}
-
-td.x::after{
-  content: 'X';
-  display: block;
-  position: relative;
-  font-size: xx-large;
-  font-family: monospace;
+  font-family: monospace; 
+  height: 100%;
 }
 
 .r3 td, .r6 td{
@@ -57,12 +45,13 @@ td.x::after{
 
 .player{
   text-align: start;
-  padding: 10px;
+  padding: 12px;
 }
 
 .turn{
   border: 2px solid white;
   border-radius: 5px;
+  padding: 10px;
 }
 
 .username{
