@@ -19,7 +19,7 @@
   grid-template-rows: repeat(3, 40px);
 }
 
-.subboard > p{
+.subboard > p {
   width: 40px;
   height: 40px;
   margin: 0px;
@@ -29,20 +29,22 @@
   border: 1px solid rgb(102, 102, 102);
 }
 
-.active{
+.active {
   background-color: rgb(45, 45, 45);
   box-shadow: 0px 0px 5px grey;
 }
 
-.r3 td, .r6 td{
+.r3 td,
+.r6 td {
   border-bottom: 3px solid rgb(102, 102, 102);
 }
 
-.c4, .c7{
+.c4,
+.c7 {
   border-left: 3px solid rgb(102, 102, 102);
 }
 
-.information{
+.information {
   padding: 10px;
   margin-left: auto;
   margin-right: auto;
@@ -51,27 +53,27 @@
   justify-content: space-between;
 }
 
-.player{
+.player {
   text-align: start;
+  margin: 5px;
   padding: 12px;
 }
 
-.turn{
+.turn {
   border: 2px solid white;
   border-radius: 5px;
   padding: 10px;
 }
 
-.username{
+.username {
   margin: 5px;
   margin-bottom: 2px;
   font-weight: bold;
 }
 
-.time{
+.time {
   margin: 5px;
   margin-top: 0px;
   font-weight: lighter;
   color: grey;
 }
-

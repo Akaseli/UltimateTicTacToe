@@ -3,7 +3,7 @@ body {
   text-align: center;
 }
 
-.appbar{
+.appbar {
   display: block;
   width: 100%;
   margin-left: 0px;
@@ -11,16 +11,16 @@ body {
   box-shadow: 0px 5px 5px rgb(34, 34, 34);
 }
 
-.langMenu{
+.langMenu {
   padding: 10px;
   display: flex;
   align-items: center;
 }
 
-.langSelector{
+.langSelector {
   padding: 5px;
   margin-left: 5px;
-  
+
   min-width: 10ch;
   max-width: 20ch;
 
@@ -32,29 +32,28 @@ body {
   display: grid;
 }
 
-
-.langFlag{
+.langFlag {
   height: 30px;
 }
 
-.langFlagMini{
+.langFlagMini {
   height: 20px;
 }
 
-button{
+button {
   border-radius: 0.25rem;
   margin: 5px;
   margin-top: 0px;
 }
 
-.online{
+.online {
   background-color: rgb(36, 36, 36);
 }
 
-.local{
+.local {
   background-color: rgb(36, 36, 36);
 }
 
-.local:hover{
+.local:hover {
   background-color: rgb(50, 50, 50);
 }

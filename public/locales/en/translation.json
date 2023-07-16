@@ -1,6 +1,6 @@
 {
-  "app" : "Ultimate TicTacToe",
-  "online" : "Online",
-  "local" : "Local",
-  "timeremaining" : "Time remaining"
+  "app": "Ultimate TicTacToe",
+  "online": "Online",
+  "local": "Local",
+  "timeremaining": "Time remaining"
 }
