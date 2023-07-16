@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 interface Props {}
 
 export const Board: React.FC<Props> = () => {
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   //false == p1 true == p2
   const [turn, setTurn] = useState(false)
@@ -56,31 +56,31 @@ export const Board: React.FC<Props> = () => {
     return (
       <div className={`subboard`}>
         <p className={classPrefix} onClick={() => capture(index, 0)}>
-          {determineSymbol(board[index][0])}
+          {determineSymbol(subBoard[0])}
         </p>
         <p className={classPrefix} onClick={() => capture(index, 1)}>
-          {determineSymbol(board[index][1])}
+          {determineSymbol(subBoard[1])}
         </p>
         <p className={classPrefix} onClick={() => capture(index, 2)}>
-          {determineSymbol(board[index][2])}
+          {determineSymbol(subBoard[2])}
         </p>
         <p className={classPrefix} onClick={() => capture(index, 3)}>
-          {determineSymbol(board[index][3])}
+          {determineSymbol(subBoard[3])}
         </p>
         <p className={classPrefix} onClick={() => capture(index, 4)}>
-          {determineSymbol(board[index][4])}
+          {determineSymbol(subBoard[4])}
         </p>
         <p className={classPrefix} onClick={() => capture(index, 5)}>
-          {determineSymbol(board[index][5])}
+          {determineSymbol(subBoard[5])}
         </p>
         <p className={classPrefix} onClick={() => capture(index, 6)}>
-          {determineSymbol(board[index][6])}
+          {determineSymbol(subBoard[6])}
         </p>
         <p className={classPrefix} onClick={() => capture(index, 7)}>
-          {determineSymbol(board[index][7])}
+          {determineSymbol(subBoard[7])}
         </p>
         <p className={classPrefix} onClick={() => capture(index, 8)}>
-          {determineSymbol(board[index][8])}
+          {determineSymbol(subBoard[8])}
         </p>
       </div>
     )
