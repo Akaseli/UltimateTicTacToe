@@ -19,6 +19,34 @@
   grid-template-rows: repeat(3, 40px);
 }
 
+.captured {
+  color: rgb(102, 102, 102);
+}
+
+.captured.x::before {
+  content: 'X';
+  position: absolute;
+  color: white;
+  line-height: 120px;
+  width: 120px;
+
+  font-size: 1000%;
+  font-weight: bolder;
+  font-family: monospace;
+}
+
+.captured.o::before {
+  content: 'O';
+  position: absolute;
+  color: white;
+  line-height: 120px;
+  width: 120px;
+
+  font-size: 1000%;
+  font-weight: bolder;
+  font-family: monospace;
+}
+
 .subboard > p {
   width: 40px;
   height: 40px;

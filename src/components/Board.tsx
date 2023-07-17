@@ -22,11 +22,25 @@ export const Board: React.FC<Props> = () => {
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
   ])
 
-  const [squareToPlay, setSquare] = useState(4)
+  const [mainBoard, setMainBoard] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0])
+
+  const winningLines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [6, 4, 2]
+  ]
+
+  const [squaresToPlay, setSquares] = useState([4])
 
   const capture = (main: number, sub: number) => {
-    if (board[main][sub] == 0 && main == squareToPlay) {
+    if (board[main][sub] == 0 && squaresToPlay.indexOf(main) != -1 && mainBoard[main] == 0) {
       const boardClone = board.slice()
+      const mainClone = mainBoard.slice()
 
       if (!turn) {
         boardClone[main][sub] = 1
@@ -35,7 +49,40 @@ export const Board: React.FC<Props> = () => {
       }
 
       setBoard(boardClone)
-      setSquare(sub)
+
+      let capture = false
+
+      //Check in case of a capture of a square
+      winningLines.forEach((line) => {
+        if (boardClone[main][line[0]] != 0 && boardClone[main][line[1]] != 0 && boardClone[main][line[2]] != 0) {
+          if (
+            boardClone[main][line[0]] == boardClone[main][line[1]] &&
+            boardClone[main][line[1]] == boardClone[main][line[2]]
+          ) {
+            if (!turn) {
+              mainClone[main] = 1
+            } else {
+              mainClone[main] = 2
+            }
+
+            setMainBoard(mainClone)
+            capture = true
+          }
+        }
+      })
+
+      if (mainClone[sub] == 0 && !capture) {
+        setSquares([sub])
+      } else {
+        const squares: number[] = []
+        mainClone.forEach((square, index) => {
+          if (square == 0) {
+            squares.push(index)
+          }
+        })
+        setSquares(squares)
+      }
+
       setTurn(!turn)
     }
   }
@@ -51,10 +98,20 @@ export const Board: React.FC<Props> = () => {
   }
 
   const boardElement = board.map((subBoard, index) => {
-    const classPrefix = index == squareToPlay ? 'active' : ''
+    const classPrefix = squaresToPlay.indexOf(index) != -1 ? 'active' : ''
+    let subBoardClass = 'subboard'
+
+    switch (mainBoard[index]) {
+      case 1:
+        subBoardClass = 'subboard captured x'
+        break
+      case 2:
+        subBoardClass = 'subboard captured o'
+        break
+    }
 
     return (
-      <div className={`subboard`}>
+      <div className={subBoardClass}>
         <p className={classPrefix} onClick={() => capture(index, 0)}>
           {determineSymbol(subBoard[0])}
         </p>
@@ -92,12 +149,12 @@ export const Board: React.FC<Props> = () => {
 
       <div className="information">
         <div className={turn ? 'player one' : 'player one turn'}>
-          <p className="username">Player 1</p>
+          <p className="username">Player 1 (X)</p>
           <p className="time">{t('timeremaining') + ' 1:23'}</p>
         </div>
 
         <div className={turn ? 'player two turn' : 'player two'}>
-          <p className="username">Player 2</p>
+          <p className="username">Player 2 (O)</p>
           <p className="time">{t('timeremaining') + ' 3:21'}</p>
         </div>
       </div>
