@@ -9,6 +9,7 @@ export const Board: React.FC<Props> = () => {
 
   //false == p1 true == p2
   const [turn, setTurn] = useState(false)
+  const [winner, setWinner] = useState(0)
 
   const [board, setBoard] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -51,8 +52,9 @@ export const Board: React.FC<Props> = () => {
       setBoard(boardClone)
 
       let capture = false
+      let win = false
 
-      //Check in case of a capture of a square
+      //Check in case of a capture of a subsquare
       winningLines.forEach((line) => {
         if (boardClone[main][line[0]] != 0 && boardClone[main][line[1]] != 0 && boardClone[main][line[2]] != 0) {
           if (
@@ -71,9 +73,24 @@ export const Board: React.FC<Props> = () => {
         }
       })
 
+      //CHECK if game is won
+      winningLines.forEach((line) => {
+        if (mainClone[line[0]] != 0 && mainClone[line[1]] != 0 && mainClone[line[2]] != 0) {
+          if (mainClone[line[0]] == mainClone[line[1]] && mainClone[line[1]] == mainClone[line[2]]) {
+            if (!turn) {
+              setWinner(1)
+            } else {
+              setWinner(2)
+            }
+            win = true
+          }
+        }
+      })
+
       if (mainClone[sub] == 0 && !capture) {
         setSquares([sub])
-      } else {
+        setTurn(!turn)
+      } else if (!win) {
         const squares: number[] = []
         mainClone.forEach((square, index) => {
           if (square == 0) {
@@ -81,9 +98,10 @@ export const Board: React.FC<Props> = () => {
           }
         })
         setSquares(squares)
+        setTurn(!turn)
+      } else {
+        setSquares([])
       }
-
-      setTurn(!turn)
     }
   }
 
@@ -152,6 +170,14 @@ export const Board: React.FC<Props> = () => {
           <p className="username">Player 1 (X)</p>
           <p className="time">{t('timeremaining') + ' 1:23'}</p>
         </div>
+
+        {winner ? (
+          <div>
+            <p>{`Player ${winner} wins!`}</p>
+          </div>
+        ) : (
+          <div></div>
+        )}
 
         <div className={turn ? 'player two turn' : 'player two'}>
           <p className="username">Player 2 (O)</p>
