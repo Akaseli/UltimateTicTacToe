@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './Board.css'
 import { useTranslation } from 'react-i18next'
 
@@ -9,7 +9,10 @@ export const Board: React.FC<Props> = () => {
 
   //false == p1 true == p2
   const [turn, setTurn] = useState(false)
+  const turnRef = useRef(false)
+
   const [winner, setWinner] = useState(0)
+  const winnerRef = useRef(0)
 
   const [board, setBoard] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -22,6 +25,12 @@ export const Board: React.FC<Props> = () => {
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0]
   ])
+
+  const [p1Time, setP1] = useState(500)
+  const p1Ref = useRef(500)
+
+  const [p2Time, setP2] = useState(500)
+  const p2Ref = useRef(500)
 
   const [mainBoard, setMainBoard] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0])
 
@@ -36,6 +45,39 @@ export const Board: React.FC<Props> = () => {
     [6, 4, 2]
   ]
 
+  const updateClock = async () => {
+    if (winnerRef.current == 0) {
+      if (!turnRef.current) {
+        p1Ref.current--
+        setP1(p1Ref.current)
+      } else {
+        p2Ref.current--
+        setP2(p2Ref.current)
+      }
+
+      //Check if time 0 -> if so enemy wins;
+      if (p1Ref.current <= 0) {
+        setWinner(2)
+        winnerRef.current = 2
+      } else if (p2Ref.current <= 0) {
+        setWinner(1)
+        winnerRef.current = 1
+      }
+    }
+  }
+
+  //startgame
+  useEffect(() => {
+    const interval = setInterval(updateClock, 1000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    //Force render
+  }, [p1Time, p2Time])
+
+  //Game starts with middle square
   const [squaresToPlay, setSquares] = useState([4])
 
   const capture = (main: number, sub: number) => {
@@ -79,8 +121,10 @@ export const Board: React.FC<Props> = () => {
           if (mainClone[line[0]] == mainClone[line[1]] && mainClone[line[1]] == mainClone[line[2]]) {
             if (!turn) {
               setWinner(1)
+              winnerRef.current = 1
             } else {
               setWinner(2)
+              winnerRef.current = 2
             }
             win = true
           }
@@ -90,6 +134,7 @@ export const Board: React.FC<Props> = () => {
       if (mainClone[sub] == 0 && !capture) {
         setSquares([sub])
         setTurn(!turn)
+        turnRef.current = !turnRef.current
       } else if (!win) {
         const squares: number[] = []
         mainClone.forEach((square, index) => {
@@ -99,6 +144,7 @@ export const Board: React.FC<Props> = () => {
         })
         setSquares(squares)
         setTurn(!turn)
+        turnRef.current = !turnRef.current
       } else {
         setSquares([])
       }
@@ -168,7 +214,7 @@ export const Board: React.FC<Props> = () => {
       <div className="information">
         <div className={turn ? 'player one' : 'player one turn'}>
           <p className="username">Player 1 (X)</p>
-          <p className="time">{t('timeremaining') + ' 1:23'}</p>
+          <p className="time">{t('timeremaining') + ' ' + p1Time}</p>
         </div>
 
         {winner ? (
@@ -181,7 +227,7 @@ export const Board: React.FC<Props> = () => {
 
         <div className={turn ? 'player two turn' : 'player two'}>
           <p className="username">Player 2 (O)</p>
-          <p className="time">{t('timeremaining') + ' 3:21'}</p>
+          <p className="time">{t('timeremaining') + ' ' + p2Time}</p>
         </div>
       </div>
     </div>
