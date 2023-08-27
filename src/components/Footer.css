@@ -1,0 +1,15 @@
+.about{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.github{
+  height: 2.5em;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.github img{
+  height: 100%;
+}

@@ -2,5 +2,7 @@
   "app": "Ultimate TicTacToe",
   "online": "Online",
   "local": "Local",
-  "timeremaining": "Time remaining"
+  "timeremaining": "Time remaining",
+  "credit": "Made by Akaseli",
+  "sourcecode": "Sourcecode"
 }

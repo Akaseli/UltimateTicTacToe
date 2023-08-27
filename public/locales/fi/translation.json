@@ -2,5 +2,7 @@
   "app": "Älykäsristinolla",
   "online": "Verkkomoninpeli",
   "local": "Paikallinen",
-  "timeremaining": "Aikaa jäljellä"
+  "timeremaining": "Aikaa jäljellä",
+  "credit": "Tekijä Akaseli",
+  "sourcecode": "Lähdekoodi"
 }

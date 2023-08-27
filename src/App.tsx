@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import './App.css'
 import { Board } from './components/Board'
 import { useTranslation } from 'react-i18next'
+import { Footer } from './components/Footer'
 
 interface Props {}
 
@@ -30,6 +31,7 @@ export const App: React.FC<Props> = () => {
           </select>
         </div>
       </div>
+
       <h1>{t('app')}</h1>
       <button className="online" disabled>
         {t('online')}
@@ -37,6 +39,8 @@ export const App: React.FC<Props> = () => {
       <button className="local">{t('local')}</button>
 
       <Board />
+
+      <Footer />
     </div>
   )
 }

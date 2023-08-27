@@ -14,6 +14,7 @@ export const Board: React.FC<Props> = () => {
   const [winner, setWinner] = useState(0)
   const winnerRef = useRef(0)
 
+  //TODO: custom reducer
   const [board, setBoard] = useState([
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
